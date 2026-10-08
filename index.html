@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="Incremental Open-Ended Deep Research with Structured Harness (IOEDR): a new research setting and structured harness for continuously updating open-ended research reports.">
+  <meta property="og:title" content="Incremental Open-Ended Deep Research with Structured Harness"/>
+  <meta property="og:description" content="A research setting and structured harness for continuously updating open-ended research reports as new information emerges."/>
+  <meta property="og:url" content="https://ioedr-project.github.io/"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/images/profile.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="Incremental Open-Ended Deep Research with Structured Harness">
+  <meta name="twitter:description" content="A research setting and structured harness for continuously updating open-ended research reports.">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/profile.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="Incremental Deep Research, Open-Ended Deep Research, OEDR, IOEDR, Structured Harness, LLM Agents, Report Generation, Evidence Pool">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Incremental Open-Ended Deep Research with Structured Harness</title>
+  <link rel="icon" type="image/png" href="static/images/logo2.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="has-text-centered" style="margin-bottom:1.2rem;">
+              <img src="static/images/logo2.png" alt="IOEDR logo" style="height:5em;">
+            </div>
+            <h1 class="title is-1 publication-title">
+              Incremental Open-Ended Deep Research <br> with Structured Harness
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="#" target="_blank">Meilin Chen</a>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Hongyuan Bao</a>
+                </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">Xiaohongshu Inc., Zhejiang University</span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Paper PDF link (local) -->
+                      <span class="link-block">
+                        <a href="static/pdfs/ioedr.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                <!-- ArXiv abstract Link (placeholder) -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/0000.00000" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/ioedr-project/ioedr" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                  <!-- Demo link (anchor to on-page section) -->
+                  <span class="link-block">
+                    <a href="#Demo"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-play"></i>
+                    </span>
+                    <span>Demo</span>
+                  </a>
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser figure -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/profile.png" alt="Report Quality, Report Continuity, and Research Cost comparison between OEDR and Incremental-OEDR (IOEDR)." style="width:100%; height:auto;">
+      <h2 class="subtitle has-text-centered">
+        <strong>Report Quality</strong>, <strong>Report Continuity</strong>, and <strong>Research Cost</strong> comparison between OEDR and Incremental-OEDR (IOEDR) under the Open-source Configuration (OC) on DeepResearch Bench. IOEDR achieves up to <strong>0.51 higher content-level ROUGE-L F1</strong>, <strong>0.63 higher outline-level EM F1</strong>, <strong>33% lower token consumption</strong>, and <strong>61% fewer search calls</strong> than OEDR.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser figure -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Existing Open-Ended Deep Research (OEDR) systems primarily generate reports from scratch, making them inefficient for scenarios where research reports need to be continuously maintained as new information emerges. We introduce <strong>Incremental Open-Ended Deep Research (Incremental-OEDR)</strong>, a research setting that treats a report as an evolving research state and incrementally updates it by preserving valid knowledge, revising outdated or incomplete content, and incorporating newly available information.
+          </p>
+          <p>
+            To support this setting, we propose <strong>Structured Harness</strong>, which represents reports as structured collections of outlines, sections, and supporting evidence, and provides structured retrieval, a persistent structured evidence pool, and structured generation for selective report updating and evidence reuse. We further establish a temporal evaluation framework spanning ten years, with <em>Single-Step Task</em> and <em>Long-Chain Task</em> to evaluate incremental updates over both individual transitions and long-term update chains.
+          </p>
+          <p>
+            Extensive experiments on DeepResearch Bench and DeepConsult under both the Open-source Configuration (OC) and Proprietary Configuration (PC) show that Incremental-OEDR maintains competitive report quality while substantially improving report continuity and reducing research costs. It achieves up to 0.40 higher content-level ROUGE-L F1, 0.51 higher outline-level EM F1, 33% lower token consumption, and 61% fewer search calls than OEDR on DeepResearch Bench. We will release our code to facilitate future OEDR research in the community.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/method.png" alt="Overview of OEDR and Structured Harness for Incremental-OEDR." style="max-width:100%; height:auto; display:block; margin:0 auto;"/>
+        <h2 class="subtitle has-text-centered">
+          <strong>Overview of OEDR and Structured Harness for Incremental-OEDR.</strong> OEDR independently generates reports from the original query, whereas Incremental-OEDR builds upon previous reports to selectively update changed or newly emerged knowledge. Structured Harness enables this via Structured Retrieval, a Structured Evidence Pool, and Structured Generation.
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/evidence_pool.png" alt="Evolution of the Structured Evidence Pool." style="max-width:100%; height:auto; display:block; margin:0 auto;"/>
+        <h2 class="subtitle has-text-centered">
+          <strong>Evolution of the Structured Evidence Pool.</strong> The persistent evidence pool supports <em>Old Evidence Update</em> by selectively refreshing existing sources and <em>New Evidence Discovery</em> by incorporating newly retrieved evidence for subsequent updates.
+        </h2>
+      </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+
+<!-- Demo: side-by-side report comparison across years -->
+<section class="hero is-small" id="Demo">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Demo</h2>
+      <p class="has-text-centered" style="margin-bottom:1rem;">
+        Side-by-side <strong>outline</strong> comparison of consecutive-year reports on
+        <strong>DeepResearch Bench task #64</strong>
+        (Query: <em>Regarding the attitude control problem for UAVs, most open-source flight controllers currently implement cascaded PID control algorithms. However, a single set of PID controller parameters typically performs well only under specific flight conditions. In practical applications, UAVs operate across diverse flight states. What methods can be employed to enhance the actual control performance of PID algorithms, and how should PID parameters be optimally selected?</em>).
+        Only Markdown headings are shown for readability. Switch between
+        <strong>OEDR</strong> (independent regeneration) and <strong>IOEDR</strong> (incremental update)
+        to observe how the two paradigms evolve a report over time.
+      </p>
+
+      <!-- Controls -->
+      <div class="has-text-centered" style="margin-bottom:0.75rem;">
+        <div class="buttons has-addons is-centered" style="margin-bottom:0.5rem;">
+          <button class="button is-dark is-selected" id="demo-method-oedr">OEDR</button>
+          <button class="button" id="demo-method-ioedr">IOEDR</button>
+        </div>
+        <div class="field is-grouped is-grouped-centered" style="margin-bottom:0.25rem;">
+          <p class="control">
+            <button class="button is-small" id="demo-prev" title="Previous transition">
+              <span class="icon"><i class="fas fa-chevron-left"></i></span>
+            </button>
+          </p>
+          <p class="control">
+            <span class="tag is-medium is-light" id="demo-range-label" style="min-width:11em;">2016 → 2017</span>
+          </p>
+          <p class="control">
+            <button class="button is-small" id="demo-next" title="Next transition">
+              <span class="icon"><i class="fas fa-chevron-right"></i></span>
+            </button>
+          </p>
+        </div>
+        <p class="is-size-7 has-text-grey">Tip: use ← / → keys, or swipe horizontally on the panels.</p>
+      </div>
+
+      <!-- Side-by-side report viewer: left pane | connector | right pane -->
+      <div id="demo-viewer" style="display:grid; grid-template-columns: 1fr 56px 1fr; gap:0;">
+        <div class="box" style="padding:0; margin:0;">
+          <div class="has-text-centered has-background-light" style="padding:0.5rem; border-bottom:1px solid #e5e5e5;">
+            <strong id="demo-year-left">2016</strong>
+            <span class="is-size-7 has-text-grey" id="demo-method-left">OEDR</span>
+          </div>
+          <div id="demo-content-left" class="diff-scroll">Loading…</div>
+        </div>
+        <div id="demo-connector" style="position:relative; height:auto;">
+          <div style="height:38px;"></div><!-- spacer to align with header -->
+          <svg id="demo-connector-svg" style="width:100%; height:620px; display:block;"
+               preserveAspectRatio="none" aria-hidden="true"></svg>
+        </div>
+        <div class="box" style="padding:0; margin:0;">
+          <div class="has-text-centered has-background-light" style="padding:0.5rem; border-bottom:1px solid #e5e5e5;">
+            <strong id="demo-year-right">2017</strong>
+            <span class="is-size-7 has-text-grey" id="demo-method-right">OEDR</span>
+          </div>
+          <div id="demo-content-right" class="diff-scroll">Loading…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="static/js/vendor/diff_match_patch.js"></script>
+<style>
+  #Demo .diff-scroll {
+    height: 620px;
+    overflow: auto;
+    background: #fff;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.80rem;
+    line-height: 1.55;
+    padding: 0;
+  }
+  #Demo .diff-row {
+    display: flex;
+    align-items: flex-start;
+  }
+  #Demo .diff-ln {
+    flex: 0 0 2.6em;
+    text-align: right;
+    padding: 0 0.6em 0 0.3em;
+    color: #999;
+    user-select: none;
+    border-right: 1px solid #eaeaea;
+    background: #fafafa;
+  }
+  #Demo .diff-text {
+    flex: 1 1 auto;
+    padding: 0 0.6em;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  /* Only differing characters are tinted; row background stays clean */
+  #Demo .diff-chg-del { background: #ffd4d4; color: #8a1414; border-radius: 2px; }
+  #Demo .diff-chg-add { background: #d4fcd4; color: #0a5c0a; border-radius: 2px; }
+  /* Entirely deleted/added lines: subtle gutter marker, no row fill */
+  #Demo .diff-row.deleted .diff-ln { background: #ffecec; color: #cb2431; }
+  #Demo .diff-row.added   .diff-ln { background: #e7ffe7; color: #22863a; }
+  #Demo .diff-row.deleted .diff-text { background: #fff5f6; }
+  #Demo .diff-row.added   .diff-text { background: #f3fff5; }
+  /* Connector SVG */
+  #Demo #demo-connector-svg path.conn-del { fill: rgba(203, 36, 49, 0.18); stroke: rgba(203,36,49,0.45); stroke-width: 1; }
+  #Demo #demo-connector-svg path.conn-add { fill: rgba(34, 134, 58, 0.18); stroke: rgba(34,134,58,0.45); stroke-width: 1; }
+  #Demo .diff-legend { font-size: 0.72rem; color: #666; margin-top: 0.4rem; padding: 0 0.3em; }
+  #Demo .diff-legend .chip { display:inline-block; padding:0 .4em; border-radius:3px; margin-right:.5em; }
+</style>
+<script>
+(function() {
+  const YEARS = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
+  const METHODS = {
+    oedr:  { label: 'OEDR',  dir: 'static/samples/oedr/'  },
+    ioedr: { label: 'IOEDR', dir: 'static/samples/ioedr/' }
+  };
+  const rawCache = {};
+  let method = 'oedr';
+  let idx = 0;
+
+  function filePath(method, year) { return METHODS[method].dir + year + '-12-31.md'; }
+
+  async function loadRaw(path) {
+    if (rawCache[path]) return rawCache[path];
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(res.status);
+    rawCache[path] = await res.text();
+    return rawCache[path];
+  }
+
+  function esc(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  const DMP = window.diff_match_patch;
+  const EQ  = 0, INS = 1, DEL = -1;
+
+  // Line-level diff via linesToChars helper. Returns raw diffs: [[op, blob], ...]
+  function lineDiff(a, b) {
+    const dmp = new DMP();
+    const c = dmp.diff_linesToChars_(a, b);
+    const diffs = dmp.diff_main(c.chars1, c.chars2, false);
+    dmp.diff_charsToLines_(diffs, c.lineArray);
+    return diffs;
+  }
+
+  // Build block list from raw line diffs. Each block has side-local rows.
+  // Block types: 'eq' (both sides, shared), 'chg' (paired del+add), 'del' (left-only), 'add' (right-only)
+  function buildBlocks(diffs) {
+    // First normalize into [{op, lines}]
+    const segs = [];
+    for (const [op, blob] of diffs) {
+      const lines = blob.split('\n');
+      if (lines.length && lines[lines.length - 1] === '') lines.pop();
+      if (lines.length) segs.push({ op, lines });
+    }
+    const blocks = [];
+    let lnL = 1, lnR = 1;
+    for (let i = 0; i < segs.length; i++) {
+      const s = segs[i];
+      if (s.op === EQ) {
+        const rows = s.lines.map(line => ({
+          n:  lnL,   // left line number
+          nR: lnR,   // right line number (same count because shared)
+          html: esc(line) || '&nbsp;'
+        }));
+        for (const _ of rows) { lnL++; lnR++; }
+        blocks.push({ type: 'eq', rows });
+      } else if (s.op === DEL) {
+        // Peek ahead: if next is INS, pair them as a 'chg' block
+        if (i + 1 < segs.length && segs[i + 1].op === INS) {
+          const dLines = s.lines;
+          const aLines = segs[i + 1].lines;
+          const pairs = Math.min(dLines.length, aLines.length);
+          const leftRows = [], rightRows = [];
+          for (let k = 0; k < pairs; k++) {
+            leftRows.push({ n: lnL++, html: '<span class="diff-chg-del">' + (esc(dLines[k]) || '&nbsp;') + '</span>' });
+            rightRows.push({ n: lnR++, html: '<span class="diff-chg-add">' + (esc(aLines[k]) || '&nbsp;') + '</span>' });
+          }
+          for (let k = pairs; k < dLines.length; k++) {
+            leftRows.push({ n: lnL++, html: '<span class="diff-chg-del">' + (esc(dLines[k]) || '&nbsp;') + '</span>' });
+          }
+          for (let k = pairs; k < aLines.length; k++) {
+            rightRows.push({ n: lnR++, html: '<span class="diff-chg-add">' + (esc(aLines[k]) || '&nbsp;') + '</span>' });
+          }
+          blocks.push({ type: 'chg', left: leftRows, right: rightRows });
+          i++; // consume the paired INS
+        } else {
+          const leftRows = s.lines.map(line => ({
+            n: lnL++, html: '<span class="diff-chg-del">' + (esc(line) || '&nbsp;') + '</span>'
+          }));
+          blocks.push({ type: 'del', left: leftRows, right: [] });
+        }
+      } else if (s.op === INS) {
+        const rightRows = s.lines.map(line => ({
+          n: lnR++, html: '<span class="diff-chg-add">' + (esc(line) || '&nbsp;') + '</span>'
+        }));
+        blocks.push({ type: 'add', left: [], right: rightRows });
+      }
+    }
+    return blocks;
+  }
+
+  // Render independent left/right streams. Each row carries data-block and data-side-row for anchors.
+  function renderStreams(blocks) {
+    const L = [], R = [];
+    blocks.forEach((b, bi) => {
+      if (b.type === 'eq') {
+        b.rows.forEach(r => {
+          const row = ln => '<div class="diff-row" data-block="' + bi + '" data-eq="1">' +
+            '<span class="diff-ln">' + ln + '</span>' +
+            '<span class="diff-text">' + r.html + '</span></div>';
+          L.push(row(r.n));
+          R.push(row(r.nR));
+        });
+      } else {
+        const cls = (b.type === 'del') ? 'deleted' :
+                    (b.type === 'add') ? 'added'  : '';
+        b.left.forEach(r => {
+          L.push('<div class="diff-row ' + (b.type === 'del' ? 'deleted' : '') + '" data-block="' + bi + '" data-side="L">' +
+                 '<span class="diff-ln">' + r.n + '</span>' +
+                 '<span class="diff-text">' + r.html + '</span></div>');
+        });
+        b.right.forEach(r => {
+          R.push('<div class="diff-row ' + (b.type === 'add' ? 'added' : '') + '" data-block="' + bi + '" data-side="R">' +
+                 '<span class="diff-ln">' + r.n + '</span>' +
+                 '<span class="diff-text">' + r.html + '</span></div>');
+        });
+      }
+    });
+    return { leftHTML: L.join(''), rightHTML: R.join('') };
+  }
+
+  // Collect per-block vertical ranges (offsetTop/bottom) on each side.
+  function measureBlockRanges(container, blocks) {
+    const map = new Map(); // block index -> {top, bottom}
+    const rows = container.querySelectorAll('.diff-row[data-block]');
+    rows.forEach(el => {
+      const bi = +el.getAttribute('data-block');
+      const top = el.offsetTop;
+      const bottom = top + el.offsetHeight;
+      const cur = map.get(bi);
+      if (!cur) map.set(bi, { top, bottom });
+      else cur.bottom = bottom;
+    });
+    return map;
+  }
+
+  // Draw bezier polygons between corresponding non-eq blocks.
+  function drawConnectors(state) {
+    const svg = document.getElementById('demo-connector-svg');
+    if (!svg) return;
+    const w = svg.clientWidth, h = svg.clientHeight;
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    svg.innerHTML = '';
+    const { blocks, leftRanges, rightRanges, leftScroll, rightScroll } = state;
+    const parts = [];
+    blocks.forEach((b, bi) => {
+      if (b.type === 'eq') return;
+      const Lr = leftRanges.get(bi);
+      const Rr = rightRanges.get(bi);
+      // Compute y positions relative to visible viewport of each scroll container
+      const lTop    = Lr ? (Lr.top    - leftScroll)  : null;
+      const lBottom = Lr ? (Lr.bottom - leftScroll)  : null;
+      const rTop    = Rr ? (Rr.top    - rightScroll) : null;
+      const rBottom = Rr ? (Rr.bottom - rightScroll) : null;
+      const cls = (b.type === 'del') ? 'conn-del' :
+                  (b.type === 'add') ? 'conn-add' : 'conn-del';
+      if (b.type === 'chg' && Lr && Rr) {
+        // Trapezoid from left block edges to right block edges, split into del + add halves
+        const mx = w / 2;
+        const c1 = w * 0.35, c2 = w * 0.65;
+        // Deletion half (red) from left to midline
+        const dPath =
+          'M 0 ' + lTop +
+          ' C ' + c1 + ' ' + lTop + ', ' + c2 + ' ' + rTop + ', ' + w + ' ' + rTop +
+          ' L ' + w + ' ' + rBottom +
+          ' C ' + c2 + ' ' + rBottom + ', ' + c1 + ' ' + lBottom + ', 0 ' + lBottom +
+          ' Z';
+        parts.push('<path class="conn-del" d="' + dPath + '"/>');
+      } else if (b.type === 'del' && Lr) {
+        const yT = lTop, yB = lBottom;
+        const dPath =
+          'M 0 ' + yT +
+          ' C ' + (w*0.4) + ' ' + yT + ', ' + (w*0.6) + ' ' + yT + ', ' + w + ' ' + yT +
+          ' L ' + w + ' ' + yT +
+          ' C ' + (w*0.6) + ' ' + yB + ', ' + (w*0.4) + ' ' + yB + ', 0 ' + yB +
+          ' Z';
+        parts.push('<path class="conn-del" d="' + dPath + '"/>');
+      } else if (b.type === 'add' && Rr) {
+        const yT = rTop, yB = rBottom;
+        const dPath =
+          'M 0 ' + yT +
+          ' C ' + (w*0.4) + ' ' + yT + ', ' + (w*0.6) + ' ' + yT + ', ' + w + ' ' + yT +
+          ' L ' + w + ' ' + yB +
+          ' C ' + (w*0.6) + ' ' + yB + ', ' + (w*0.4) + ' ' + yT + ', 0 ' + yT +
+          ' Z';
+        parts.push('<path class="conn-add" d="' + dPath + '"/>');
+      }
+    });
+    svg.innerHTML = parts.join('');
+  }
+
+  // Smart scroll sync: when user scrolls one side, align the matching equal block on the other side.
+  function attachSmartSync(leftEl, rightEl, state) {
+    if (leftEl._syncBound) return;
+    let lock = false;
+    const findAnchorOnSide = (containerRanges, scrollTop) => {
+      // Find the first eq block whose top is >= scrollTop; fallback to last eq above
+      let best = null, bestAbove = null;
+      state.eqBlocks.forEach(bi => {
+        const r = containerRanges.get(bi);
+        if (!r) return;
+        if (r.top >= scrollTop) {
+          if (!best || r.top < best.top) best = { bi, top: r.top };
+        } else {
+          if (!bestAbove || r.top > bestAbove.top) bestAbove = { bi, top: r.top };
+        }
+      });
+      return best || bestAbove;
+    };
+    const onScroll = (src, dst, srcRanges, dstRanges) => () => {
+      if (lock) return;
+      const anchor = findAnchorOnSide(srcRanges, src.scrollTop);
+      if (!anchor) { // no equal blocks; fallback to proportional
+        const sh = src.scrollHeight - src.clientHeight;
+        const dh = dst.scrollHeight - dst.clientHeight;
+        if (sh > 0) {
+          lock = true;
+          dst.scrollTop = (src.scrollTop / sh) * dh;
+          requestAnimationFrame(() => { lock = false; });
+        }
+      } else {
+        const srcRange = srcRanges.get(anchor.bi);
+        const dstRange = dstRanges.get(anchor.bi);
+        if (dstRange) {
+          const offsetWithinAnchor = src.scrollTop - srcRange.top;
+          lock = true;
+          dst.scrollTop = dstRange.top + offsetWithinAnchor;
+          requestAnimationFrame(() => { lock = false; });
+        }
+      }
+      state.leftScroll = leftEl.scrollTop;
+      state.rightScroll = rightEl.scrollTop;
+      drawConnectors(state);
+    };
+    leftEl.addEventListener('scroll',  onScroll(leftEl,  rightEl, state.leftRanges, state.rightRanges));
+    rightEl.addEventListener('scroll', onScroll(rightEl, leftEl,  state.rightRanges, state.leftRanges));
+    leftEl._syncBound = rightEl._syncBound = true;
+  }
+
+  let currentState = null;
+
+  async function render() {
+    const yearL = YEARS[idx];
+    const yearR = YEARS[idx + 1];
+    document.getElementById('demo-year-left').textContent = yearL;
+    document.getElementById('demo-year-right').textContent = yearR;
+    document.getElementById('demo-method-left').textContent = METHODS[method].label;
+    document.getElementById('demo-method-right').textContent = METHODS[method].label;
+    document.getElementById('demo-range-label').textContent = yearL + ' → ' + yearR;
+
+    const left  = document.getElementById('demo-content-left');
+    const right = document.getElementById('demo-content-right');
+    left.innerHTML  = '<div style="padding:1rem;">Computing diff…</div>';
+    right.innerHTML = '<div style="padding:1rem;">Computing diff…</div>';
+
+    try {
+      const [tL, tR] = await Promise.all([
+        loadRaw(filePath(method, yearL)),
+        loadRaw(filePath(method, yearR))
+      ]);
+      const diffs = lineDiff(tL, tR);
+      const blocks = buildBlocks(diffs);
+      const { leftHTML, rightHTML } = renderStreams(blocks);
+      left.innerHTML  = leftHTML  || '<div style="padding:1rem;color:#666;">(empty)</div>';
+      right.innerHTML = rightHTML || '<div style="padding:1rem;color:#666;">(empty)</div>';
+
+      // Build state after DOM is painted
+      requestAnimationFrame(() => {
+        const leftRanges  = measureBlockRanges(left,  blocks);
+        const rightRanges = measureBlockRanges(right, blocks);
+        const eqBlocks = blocks.map((b, i) => b.type === 'eq' ? i : -1).filter(i => i >= 0);
+        currentState = {
+          blocks, leftRanges, rightRanges, eqBlocks,
+          leftScroll: 0, rightScroll: 0
+        };
+        left.scrollTop = 0;
+        right.scrollTop = 0;
+        attachSmartSync(left, right, currentState);
+        drawConnectors(currentState);
+      });
+    } catch (e) {
+      left.innerHTML = right.innerHTML = '<p class="has-text-danger" style="padding:1rem;">Failed to compute diff.</p>';
+    }
+
+    document.getElementById('demo-prev').disabled = (idx <= 0);
+    document.getElementById('demo-next').disabled = (idx >= YEARS.length - 2);
+  }
+
+  function setMethod(m) {
+    if (!METHODS[m] || m === method) return;
+    method = m;
+    document.getElementById('demo-method-oedr').classList.toggle('is-selected', m === 'oedr');
+    document.getElementById('demo-method-oedr').classList.toggle('is-dark', m === 'oedr');
+    document.getElementById('demo-method-ioedr').classList.toggle('is-selected', m === 'ioedr');
+    document.getElementById('demo-method-ioedr').classList.toggle('is-dark', m === 'ioedr');
+    render();
+  }
+
+  function step(delta) {
+    const next = idx + delta;
+    if (next < 0 || next > YEARS.length - 2) return;
+    idx = next;
+    render();
+  }
+
+  document.getElementById('demo-method-oedr').addEventListener('click', () => setMethod('oedr'));
+  document.getElementById('demo-method-ioedr').addEventListener('click', () => setMethod('ioedr'));
+  document.getElementById('demo-prev').addEventListener('click', () => step(-1));
+  document.getElementById('demo-next').addEventListener('click', () => step(1));
+
+  window.addEventListener('keydown', (e) => {
+    const viewer = document.getElementById('demo-viewer');
+    const rect = viewer.getBoundingClientRect();
+    if (!(rect.top < window.innerHeight && rect.bottom > 0)) return;
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); step(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); step(1);  }
+  });
+
+  window.addEventListener('resize', () => { if (currentState) drawConnectors(currentState); });
+
+  render();
+})();
+</script>
+<!-- End demo -->
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{chen2026ioedr,
+  title   = {Incremental Open-Ended Deep Research with Structured Harness},
+  author  = {Chen, Meilin and Bao, Hongyuan},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
