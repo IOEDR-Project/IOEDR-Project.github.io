@@ -325,13 +325,47 @@
   const DMP = window.diff_match_patch;
   const EQ  = 0, INS = 1, DEL = -1;
 
-  // Line-level diff via linesToChars helper. Returns raw diffs: [[op, blob], ...]
+  // Strip markdown heading markers (#) and section numbers like "1.", "1.2", "1.2.3"
+  // so that a renumbered or re-leveled heading still matches its old counterpart.
+  function normalizeLine(s) {
+    let t = s.replace(/^\s*#+\s*/, '');          // leading # markers
+    t = t.replace(/^(?:\d+(?:\.\d+)*\.?)\s*/, ''); // leading section number
+    return t.trim().toLowerCase();
+  }
+
+  // Line-level diff via linesToChars helper, matched on normalized form but
+  // emitted with the original line text. Returns raw diffs: [[op, blob], ...]
   function lineDiff(a, b) {
     const dmp = new DMP();
-    const c = dmp.diff_linesToChars_(a, b);
+    const aLines = a.split('\n');
+    const bLines = b.split('\n');
+    const aNorm = aLines.map(normalizeLine).join('\n');
+    const bNorm = bLines.map(normalizeLine).join('\n');
+    const c = dmp.diff_linesToChars_(aNorm, bNorm);
     const diffs = dmp.diff_main(c.chars1, c.chars2, false);
     dmp.diff_charsToLines_(diffs, c.lineArray);
-    return diffs;
+    // Replace normalized blobs with original lines (preserving diff structure).
+    let ai = 0, bi = 0;
+    const out = [];
+    for (const [op, blob] of diffs) {
+      const parts = blob.split('\n');
+      const hasTrailingNewline = parts[parts.length - 1] === '';
+      if (hasTrailingNewline) parts.pop();
+      const n = parts.length;
+      let origLines;
+      if (op === EQ) {
+        origLines = aLines.slice(ai, ai + n);
+        ai += n; bi += n;
+      } else if (op === DEL) {
+        origLines = aLines.slice(ai, ai + n);
+        ai += n;
+      } else {
+        origLines = bLines.slice(bi, bi + n);
+        bi += n;
+      }
+      out.push([op, origLines.join('\n') + (hasTrailingNewline ? '\n' : '')]);
+    }
+    return out;
   }
 
   // Build block list from raw line diffs. Each block has side-local rows.
